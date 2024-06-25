@@ -22,13 +22,12 @@ public class StudentFactory {
     public Student build(String name, double gpa) throws CannotCreateStudentException {
         if (!this.validateName(name))
             throw new CannotCreateStudentException("Student name is invalid.");
-
+    
         if (!this.validateGpa(gpa))
             throw new CannotCreateStudentException("Student GPA is invalid.");
-
-        return null;
+    
+        return new ca.sait.crs.models.Student(name, gpa);
     }
-
     /**
      * Validates student name
      * @param name

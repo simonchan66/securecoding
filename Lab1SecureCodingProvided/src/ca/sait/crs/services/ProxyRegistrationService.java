@@ -20,10 +20,14 @@ public class ProxyRegistrationService implements RegistrationService {
 
     @Override
     public Registration register(Student student, Course course) throws CannotCreateRegistrationException {
+        if (student == null) {
+            throw new CannotCreateRegistrationException("Student cannot be null.");
+        }
+    
         if (student.getGpa() <= 2.0) {
             throw new CannotCreateRegistrationException("Student GPA does not meet the minimum requirement for course registration.");
         }
-
+    
         return this.realRegistrationService.register(student, course);
     }
 
